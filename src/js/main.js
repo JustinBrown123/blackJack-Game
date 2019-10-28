@@ -2,9 +2,10 @@ import BlackJack from "blackjack-dealer-logic"
 
 
 
+
 export default () => {
-    alert("Lets play some blackjack");
-    const gameIsRunning = true;
+   
+    
     const singleDeckGame = BlackJack.singleDeckGame;
     const playButton = document.getElementById("btn-play");
     const dealer = document.getElementById("dealer");
@@ -15,13 +16,34 @@ export default () => {
     const doubleButton = document.getElementById("btn-double");
     const outcome = document.getElementById("outcome");
     const Result = BlackJack.Result;
+    const name = document.getElementById("name")
     
+    const pastGames = document.getElementById("pastGames")
+    
+    var handResults = []
+    for (var i = 0; i < handResults.length; i++) {
+        var str = '';
+        for (var j = 0; j <= i; j++) {
+          if (handResults[j] == 'E') str += '3';
+          else str += handResults[j];
+        }
+        document.querySelector('span').innerHTML = document.querySelector('span').innerHTML + str + '<br />';
+      }
+
+    const userName = window.prompt("Please enter Your Name");
+    name.innerHTML = `Players Name: ${userName}`;
+
+
+
     playButton.onclick = function(){
-        //while (gameIsRunning){
+
+
+        
         //alert ("you've clicked me")
         outcome.innerHTML = ``;
         start.innerHTML = `Your Chip Count is ${singleDeckGame.getUserChips()}`;
         const userWager = window.prompt("Please enter an amount to wager: ");
+
         singleDeckGame.receiveAnte(userWager);
         wager.innerHTML = `Your bet is: ${userWager}`;
 
@@ -30,7 +52,8 @@ export default () => {
         dealer.innerHTML = `Dealer is showing: ${singleDeckGame.getDealerCardUp()}`;
         userHand.innerHTML = `Your current hand: ${singleDeckGame.getUserHandValue()}`;
 
- 
+
+
         hitButton.onclick = function(){
             singleDeckGame.hitUser();
             singleDeckGame.evaluateUser();
@@ -38,16 +61,28 @@ export default () => {
             if (singleDeckGame.isUserBust());{
                 Result.LOSS
                 outcome.innerHTML = `YOU WENT OVERBOARD`;
+                singleDeckGame.settleDealerHand();
                 singleDeckGame.resetAnte();
-                singleDeckGame.resetPlayers
+                singleDeckGame.resetPlayers();
+                handResults.push("loss")
                 }
                }
         
         doubleButton.onclick = function(){
             singleDeckGame.doubleUser();
             singleDeckGame.evaluateUser();
+            singleDeckGame.settleDealerHand();
             userHand.innerHTML = `Your current hand: ${singleDeckGame.getUserHandValue()}`;
+            if (singleDeckGame.isUserBust());{
+                Result.LOSS
+                outcome.innerHTML = `Thats a loss`;
+                singleDeckGame.resetAnte();
+                singleDeckGame.resetPlayers();
+                handResults.push("loss")
+
+                }
                }
+            }
                
         
         standButton.onclick = function(){
@@ -59,23 +94,31 @@ export default () => {
                     case Result.LOSS:
                         outcome.innerHTML = `You Lost ...`;
                         singleDeckGame.resetAnte();
+                        handResults.push("loss")
+
                         break;
 
                     case Result.PUSH:
                         outcome.innterHTML = `PUSH... Well you didn't lose anthing"`;
                         singleDeckGame.pushHand();
+                        handResults.push("push")
+
                         break;
 
                     case Result.WIN:
                         outcome.innerHTML = `YOU WON`
                         singleDeckGame.userWin();
+                        handResults.push("win")
+
                         break;
                 }
-                
                 singleDeckGame.resetPlayers();
+               
+            }
+
+            pastGames.innerHTML = `${handResults()}`
+                
+        }
+    
         
 
-            }
-        
-        }
-        }
