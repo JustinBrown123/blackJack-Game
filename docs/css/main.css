@@ -4,7 +4,17 @@
     padding: 0;
     
     }
-    
+    div{
+        padding-top: 0.50em;
+    }
+
+    #play{
+        text-align: center; 
+    }
+    #name{
+        margin-bottom: .25em;
+    }
+
     #app{
         height: 100vh;
         width: 100%;
@@ -12,28 +22,44 @@
     }
     
     #header{
-        padding-top: 2em;
+        padding-top: 1em;
         align-content: center;
         text-align: center; 
     }
-
     #namePlayButton{
-        padding-top: 2em;
+        padding-top: 1em;
         align-content: center;
         text-align: center; 
+        padding-bottom: 1em;
     }
     #inPlayButtons{
-        padding-top: 2em;
-        padding-bottom: 3em;
+        padding-top: 1em;
+        padding-bottom: 2em;
         text-align: center;
     }
     #table{
-        padding-top: 1em;
+        padding-top: 5em;
         padding-bottom: 1em;
         text-align: center;
-
         
-    }
+        border: 5px solid #333;
+        background-color: rgb(255, 0, 255);
+        max-width: 20em;
+        height: 250px;  
+        margin-left: auto;
+        margin-right: auto;
 
    
-    
+    }
+    #outcome{
+        padding-top: 1em;
+        padding-bottom: 1em;
+ 
+    }
+   #past{
+    text-align: center;
+
+   }
+    #reset{
+        text-align: center;
+    }
