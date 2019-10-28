@@ -21,26 +21,18 @@ export default () => {
     const pastGames = document.getElementById("pastGames")
     
     var handResults = []
-    for (var i = 0; i < handResults.length; i++) {
-        var str = '';
-        for (var j = 0; j <= i; j++) {
-          if (handResults[j] == 'E') str += '3';
-          else str += handResults[j];
-        }
-        document.querySelector('span').innerHTML = document.querySelector('span').innerHTML + str + '<br />';
-      }
+  
 
     const userName = window.prompt("Please enter Your Name");
-    name.innerHTML = `Players Name: ${userName}`;
+    name.innerHTML = `${userName}`;
 
 
 
     playButton.onclick = function(){
-
-
-        
+            
         //alert ("you've clicked me")
         outcome.innerHTML = ``;
+        pastGames.innerHTML = handResults;
         start.innerHTML = `Your Chip Count is ${singleDeckGame.getUserChips()}`;
         const userWager = window.prompt("Please enter an amount to wager: ");
 
@@ -95,28 +87,25 @@ export default () => {
                         outcome.innerHTML = `You Lost ...`;
                         singleDeckGame.resetAnte();
                         handResults.push("loss")
-
                         break;
 
                     case Result.PUSH:
                         outcome.innterHTML = `PUSH... Well you didn't lose anthing"`;
                         singleDeckGame.pushHand();
                         handResults.push("push")
-
                         break;
 
                     case Result.WIN:
                         outcome.innerHTML = `YOU WON`
                         singleDeckGame.userWin();
                         handResults.push("win")
-
                         break;
                 }
                 singleDeckGame.resetPlayers();
                
             }
 
-            pastGames.innerHTML = `${handResults()}`
+            pastGames.innerHTML = handResults;
                 
         }
     

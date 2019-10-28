@@ -10,3 +10,30 @@
         width: 100%;
         background-color: purple;
     }
+    
+    #header{
+        padding-top: 2em;
+        align-content: center;
+        text-align: center; 
+    }
+
+    #namePlayButton{
+        padding-top: 2em;
+        align-content: center;
+        text-align: center; 
+    }
+    #inPlayButtons{
+        padding-top: 2em;
+        padding-bottom: 3em;
+        text-align: center;
+    }
+    #table{
+        padding-top: 1em;
+        padding-bottom: 1em;
+        text-align: center;
+
+        
+    }
+
+   
+    
